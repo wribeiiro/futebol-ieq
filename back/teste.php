@@ -1,26 +1,34 @@
 <?php
 
+use Dotenv\Dotenv;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 function randomizeTeams()
 {
-	$players = [
-        'ANDRÉ' => 'https://www.wribeiiro.com/players/andre.png',
-        'BENJAMIM' => 'https://www.wribeiiro.com/players/blank.png',
-        'CASSIANO' => 'https://www.wribeiiro.com/players/cassiano.png',
-        'CLEFERSON GK' => 'https://www.wribeiiro.com/players/blank.png',
-        'DANIEL' => 'https://www.wribeiiro.com/players/blank.png',
-        'DE GEA GK' => 'https://www.wribeiiro.com/players/blank.png',
-        'FÁBIO' => 'https://www.wribeiiro.com/players/blank.png',
-        'JULIO' => 'https://www.wribeiiro.com/players/blank.png',
-        'LEANDRO' => 'https://www.wribeiiro.com/players/leo.png',
-        'LIPSZERA' => 'https://www.wribeiiro.com/players/lipszera.png',
-        'LUCIANO' => 'https://www.wribeiiro.com/players/blank.png',
-        'PASTOR' => 'https://www.wribeiiro.com/players/blank.png',
-        'PAULINHO' => 'https://www.wribeiiro.com/players/blank.png',
-        'REGINALDO' => 'https://www.wribeiiro.com/players/blank.png',
-        'RENAN' => 'https://www.wribeiiro.com/players/blank.png',
-        'WALLACE' => 'https://www.wribeiiro.com/players/blank.png',
-        'WELL' => 'https://www.wribeiiro.com/players/well.png',
-    ];
+    $resultPlayers = [];
+
+    try {
+        $dsn = "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_DATABASE']};port={$_ENV['DB_PORT']}";
+        $pdo = new \PDO($dsn, $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $statement = $pdo->prepare("SELECT name, image FROM players ORDER BY name ASC");
+        $statement->execute();
+
+        $resultPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (\Exception $e) {
+        die($e);
+    }
+
+    $players = [];
+    foreach ($resultPlayers as $play) {
+        $players[$play['name']] = $play['image'];
+    }
 
     $playerKeys = array_keys($players);
 
@@ -28,14 +36,14 @@ function randomizeTeams()
 
     $sortedPlayers = [];
     foreach ($playerKeys as $player) {
-        $sortedPlayers[$player] = $players[$player];
+        $sortedPlayers[] = ['name' => $player, 'image' => $players[$player]];
     }
 
-	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 2), true);
+	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 2));
     $invalidGk = 0;
 
-    foreach (array_keys($teams[0]) as $player) {
-        if (str_contains($player, ' GK')) $invalidGk++;
+    foreach ($teams[0] as $player) {
+        if (str_contains($player['name'], ' GK')) $invalidGk++;
     }
 
     if ($invalidGk == 0 || $invalidGk == 2) {
@@ -46,6 +54,9 @@ function randomizeTeams()
 }
 
 $teams = randomizeTeams();
+
+[$player1TeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA, $player7TeamA, $player8TeamA] = $teams[0];
+[$player1TeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB, $player8TeamB] = $teams[1];
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +64,7 @@ $teams = randomizeTeams();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Squad</title>
+    <title>Squad Builder</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
 
@@ -167,50 +178,46 @@ $teams = randomizeTeams();
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-
-                    <small>
-                    <?php foreach ($teams[0] as $k => $t) echo $k . '<br>';  ?>
-                    </small>
                 </div>
                 <div class="field">
                     <table class="squad">
 
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/well.png" alt="ata" width="100" height="100">
+                                <img src="<?= $player1TeamA['image'] ?>" alt="ata" width="100" height="100">
                                 <br>
-                                Well
+                                <?= $player1TeamA['name'] ?>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="rf" width="100" height="100">
+                                <img src="<?= $player2TeamA['image'] ?>" alt="rf" width="100" height="100">
                                 <br>
-                                Luciano
+                                <?= $player2TeamA['name'] ?>
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/lipszera.png" alt="mid" width="100" height="100">
+                                <img src="<?= $player3TeamA['image'] ?>" alt="mid" width="100" height="100">
                                 <br>
-                                Lipszera
+                                <?= $player3TeamA['name'] ?>
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="lf" width="100" height="100">
+                                <img src="<?= $player4TeamA['image'] ?>" alt="lf" width="100" height="100">
                                 <br>
-                                Paulinho
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/andre.png" alt="fix" width="100" height="100">
-                                <br>
-                                André
+                                <?= $player4TeamA['name'] ?>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="gk" width="100" height="100">
+                                <img src="<?= $player5TeamA['image'] ?>" alt="fix" width="100" height="100">
                                 <br>
-                                De Gea
+                                <?= $player5TeamA['name'] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <img src="<?= $player6TeamA['image'] ?>" alt="gk" width="100" height="100">
+                                <br>
+                                <?= $player6TeamA['name'] ?>
                             </td>
                         </tr>
                     </table>
@@ -219,20 +226,14 @@ $teams = randomizeTeams();
                 <div class="row-subs">
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
-                            <p>Daniel</p>
+                            <img src="<?= $player7TeamA['image'] ?>" alt="ata" width="100" height="100">
+                            <p><?= $player1TeamA['name'] ?></p>
                         </div>
                     </div>
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
-                            <p>Fábio</p>
-                        </div>
-                    </div>
-                    <div class="col-subs">
-                        <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
-                            <p>Pastor</p>
+                            <img src="<?= $player8TeamA['image'] ?>" alt="ata" width="100" height="100">
+                            <p><?= $player8TeamA['name'] ?></p>
                         </div>
                     </div>
                 </div>
@@ -249,49 +250,45 @@ $teams = randomizeTeams();
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <small>
-                    <?php foreach ($teams[1] as $k => $t) echo $k . '<br>';  ?>
-                    </small>
                 </div>
                 <div class="field">
                     <table class="squad">
-
-                        <tr>
-                            <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/cassiano.png" alt="ata" width="100" height="100">
-                                <br>
-                                Cassiano
-                            </td>
-                        </tr>
                         <tr>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/leo.png" alt="rf" width="100" height="100">
+                                <img src="<?= $player1TeamB['image'] ?>" alt="ata" width="100" height="100">
                                 <br>
-                                Leo
+                                <?= $player1TeamB['name'] ?>
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="mid" width="100" height="100">
+                                <img src="<?= $player2TeamB['image'] ?>" alt="rf" width="100" height="100">
                                 <br>
-                                Benjamim
-                            </td>
-                            <td>
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="lf" width="100" height="100">
-                                <br>
-                                Reginaldo
+                                <?= $player2TeamB['name'] ?>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="fix" width="100" height="100">
+                                <img src="<?= $player3TeamB['image'] ?>" alt="mid" width="100" height="100">
                                 <br>
-                                Wallace
+                                <?= $player3TeamB['name'] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="<?= $player4TeamB['image'] ?>" alt="lf" width="100" height="100">
+                                <br>
+                                <?= $player4TeamB['name'] ?>
+                            </td>
+                            <td>
+                                <img src="<?= $player5TeamB['image'] ?>" alt="fix" width="100" height="100">
+                                <br>
+                                <?= $player5TeamB['name'] ?>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/blank.png" alt="gk" width="100" height="100">
+                                <img src="<?= $player6TeamB['image'] ?>" alt="gk" width="100" height="100">
                                 <br>
-                                Cleferson
+                                <?= $player6TeamB['name'] ?>
                             </td>
                         </tr>
                     </table>
@@ -300,14 +297,14 @@ $teams = randomizeTeams();
                 <div class="row-subs">
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
-                            <p>Renan</p>
+                            <img src="<?= $player7TeamB['image'] ?>" alt="ata" width="100" height="100">
+                            <p><?= $player7TeamB['name'] ?></p>
                         </div>
                     </div>
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
-                            <p>Júlio</p>
+                            <img src="<?= $player8TeamB['image'] ?>" alt="ata" width="100" height="100">
+                            <p><?= $player8TeamB['name'] ?></p>
                         </div>
                     </div>
                 </div>
