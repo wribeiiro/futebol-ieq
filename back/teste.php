@@ -2,14 +2,39 @@
 
 function randomizeTeams()
 {
-	$players = ['ANDRÉ', 'BENJAMIM', 'CASSIANO', 'CLEFERSON GK', 'DANIEL', 'DE GEA GK', 'FÁBIO', 'JULIO', 'LEANDRO', 'LIPSZERA', 'LUCIANO', 'PASTOR', 'PAULINHO', 'REGINALDO', 'RENAN', 'WALLACE', 'WELL'];
+	$players = [
+        'ANDRÉ' => 'https://www.wribeiiro.com/players/andre.png',
+        'BENJAMIM' => 'https://www.wribeiiro.com/players/blank.png',
+        'CASSIANO' => 'https://www.wribeiiro.com/players/cassiano.png',
+        'CLEFERSON GK' => 'https://www.wribeiiro.com/players/blank.png',
+        'DANIEL' => 'https://www.wribeiiro.com/players/blank.png',
+        'DE GEA GK' => 'https://www.wribeiiro.com/players/blank.png',
+        'FÁBIO' => 'https://www.wribeiiro.com/players/blank.png',
+        'JULIO' => 'https://www.wribeiiro.com/players/blank.png',
+        'LEANDRO' => 'https://www.wribeiiro.com/players/leo.png',
+        'LIPSZERA' => 'https://www.wribeiiro.com/players/lipszera.png',
+        'LUCIANO' => 'https://www.wribeiiro.com/players/blank.png',
+        'PASTOR' => 'https://www.wribeiiro.com/players/blank.png',
+        'PAULINHO' => 'https://www.wribeiiro.com/players/blank.png',
+        'REGINALDO' => 'https://www.wribeiiro.com/players/blank.png',
+        'RENAN' => 'https://www.wribeiiro.com/players/blank.png',
+        'WALLACE' => 'https://www.wribeiiro.com/players/blank.png',
+        'WELL' => 'https://www.wribeiiro.com/players/well.png',
+    ];
 
-	shuffle($players);
+    $playerKeys = array_keys($players);
 
-	$teams = array_chunk($players, ceil(count($players) / 2));
+	shuffle($playerKeys);
 
+    $sortedPlayers = [];
+    foreach ($playerKeys as $player) {
+        $sortedPlayers[$player] = $players[$player];
+    }
+
+	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 2), true);
     $invalidGk = 0;
-    foreach ($teams[0] as $player) {
+
+    foreach (array_keys($teams[0]) as $player) {
         if (str_contains($player, ' GK')) $invalidGk++;
     }
 
@@ -21,7 +46,6 @@ function randomizeTeams()
 }
 
 $teams = randomizeTeams();
-
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +54,16 @@ $teams = randomizeTeams();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Squad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
 
     body {
         padding: 10px;
+        background-image: url('https://www.wribeiiro.com/players/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 
     html {
@@ -54,6 +84,7 @@ $teams = randomizeTeams();
         padding: 15px;
         text-align: center;
         color: #fff;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 
     .field {
@@ -84,7 +115,6 @@ $teams = randomizeTeams();
     .col {
         display: flex;
         flex-direction: column;
-        flex-basis: 100%;
         flex: 1;
     }
 
@@ -105,72 +135,99 @@ $teams = randomizeTeams();
         text-align: center;
     }
 
+    .head-team {
+        display: flex;
+        align-items:center;
+        font-size: 22px;
+        flex-direction: column;
+    }
+
+    .fa-star {
+        color: #FDDC54 !important;
+    }
+
     </style>
 </head>
 <body>
+    <button type="button" onclick="window.location.reload()">Gerar equipes</button>
     <div class='wrapper'>
         <div class="row">
             <div class="col">
-                <h2>TEAM A</h2>
+                <div class="head-team">
+                    <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
+                    <span>TEAM A</span>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <small>
+                    <?php foreach ($teams[0] as $k => $t) echo $k . '<br>';  ?>
+                    </small>
+                </div>
                 <div class="field">
                     <table class="squad">
+
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/well.png" alt="ata" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/well.png" alt="ata" width="100" height="100">
                                 <br>
                                 Well
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/evertonribeiro.png" alt="rf" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="rf" width="100" height="100">
                                 <br>
                                 Luciano
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/lipszera.png" alt="mid" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/lipszera.png" alt="mid" width="100" height="100">
                                 <br>
                                 Lipszera
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/ya9.jpg" alt="lf" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="lf" width="100" height="100">
                                 <br>
                                 Paulinho
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/andre.png" alt="fix" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/andre.png" alt="fix" width="100" height="100">
                                 <br>
                                 André
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/de-gea.jpg" alt="gk" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="gk" width="100" height="100">
                                 <br>
                                 De Gea
                             </td>
                         </tr>
                     </table>
                 </div>
-                <h2>RESERVAS</h2>
+                <h2>BANCO A</h2>
                 <div class="row-subs">
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/luan.jpg" alt="ata" width="75" height="105">
+                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
                             <p>Daniel</p>
                         </div>
                     </div>
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/zeroberto.jpg" alt="ata" width="75" height="105">
+                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
                             <p>Fábio</p>
                         </div>
                     </div>
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/ancelotti.jpg" alt="ata" width="75" height="105">
+                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
                             <p>Pastor</p>
                         </div>
                     </div>
@@ -178,60 +235,74 @@ $teams = randomizeTeams();
             </div>
 
             <div class="col">
-                <h2 style="text-align: center;">TEAM B</h2>
+                <div class="head-team">
+                    <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
+                    <span>TEAM B</span>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <small>
+                    <?php foreach ($teams[1] as $k => $t) echo $k . '<br>';  ?>
+                    </small>
+                </div>
                 <div class="field">
                     <table class="squad">
+
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/cassiano.png" alt="ata" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/cassiano.png" alt="ata" width="100" height="100">
                                 <br>
                                 Cassiano
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/leandro.png" alt="rf" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/leo.png" alt="rf" width="100" height="100">
                                 <br>
                                 Leo
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/cr7.jpg" alt="mid" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="mid" width="100" height="100">
                                 <br>
                                 Benjamim
                             </td>
                             <td>
-                                <img src="https://www.wribeiiro.com/players/zeroberto.jpg" alt="lf" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="lf" width="100" height="100">
                                 <br>
                                 Reginaldo
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/r10.jpg" alt="fix" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="fix" width="100" height="100">
                                 <br>
                                 Wallace
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="https://www.wribeiiro.com/players/cassio.jpg" alt="gk" width="75" height="105">
+                                <img src="https://www.wribeiiro.com/players/blank.png" alt="gk" width="100" height="100">
                                 <br>
                                 Cleferson
                             </td>
                         </tr>
                     </table>
                 </div>
-                <h2>RESERVAS</h2>
+                <h2>BANCO B</h2>
                 <div class="row-subs">
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/cr7.jpg" alt="ata" width="75" height="105">
+                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
                             <p>Renan</p>
                         </div>
                     </div>
                     <div class="col-subs">
                         <div class="subs-player">
-                            <img src="https://www.wribeiiro.com/players/cr7.jpg" alt="ata" width="75" height="105">
+                            <img src="https://www.wribeiiro.com/players/blank.png" alt="ata" width="100" height="100">
                             <p>Júlio</p>
                         </div>
                     </div>
