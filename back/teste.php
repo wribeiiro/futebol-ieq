@@ -36,12 +36,8 @@ class Database
     }
 }
 
-function randomizeTeams()
+function randomizeTeams(array $resultPlayers = [])
 {
-    $resultPlayers = [];
-    $connection = Database::getInstance();
-    $resultPlayers = $connection->query("SELECT name, image FROM players ORDER BY name ASC")->fetchAll(\PDO::FETCH_ASSOC);
-
     $players = [];
     foreach ($resultPlayers as $play) {
         $players[$play['name']] = $play['image'];
@@ -52,34 +48,32 @@ function randomizeTeams()
 	shuffle($playerKeys);
 
     $sortedPlayers = [];
+    $gks = [];
     foreach ($playerKeys as $player) {
+    	if (str_contains($player, ' GK')) {
+    		$gks[] = ['name' => $player, 'image' => $players[$player]];
+    		continue;
+    	}
+    	
         $sortedPlayers[] = ['name' => $player, 'image' => $players[$player]];
     }
 
 	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 3));
-    $amountTeamGk = array_filter($teams[0], fn ($v) => str_contains($v['name'], ' GK'), ARRAY_FILTER_USE_BOTH);
-
-    //echo '<pre>';
-    //print_r($amountTeamGk);
-
-    if (count($amountTeamGk) == 0 || count($amountTeamGk) > 1) {
-        $teams = randomizeTeams();
-    }
-
+	
+	array_unshift($teams[0], $gks[0]);
+	array_unshift($teams[1], $gks[1]);
+	array_unshift($teams[2], $gks[random_int(0, 1)]);
+    
     return $teams;
 }
 
-$teams = randomizeTeams();
-
-usort($teams[0], fn ($a, $b) => str_contains($b['name'], ' GK') - str_contains($a['name'], ' GK'));
-usort($teams[1], fn ($a, $b) => str_contains($b['name'], ' GK') - str_contains($a['name'], ' GK'));
-usort($teams[2], fn ($a, $b) => str_contains($b['name'], ' GK') - str_contains($a['name'], ' GK'));
+$connection = Database::getInstance();
+$resultPlayers = $connection->query("SELECT name, image FROM players ORDER BY name ASC")->fetchAll(\PDO::FETCH_ASSOC);
+$teams = randomizeTeams($resultPlayers);
 
 [$gkTeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA] = $teams[0];
 [$gkTeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB] = $teams[1];
-[$player2TeamC, $player3TeamC, $player4TeamC, $player5TeamC, $player6TeamC] = $teams[2];
-
-$gkTeamC = $gkTeamA;
+[$gkTeamC, $player2TeamC, $player3TeamC, $player4TeamC, $player5TeamC, $player6TeamC] = $teams[2];
 
 ?>
 
@@ -380,9 +374,9 @@ $gkTeamC = $gkTeamA;
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <img src="<?= $gkTeamA['image'] ?>" alt="gk" width="100" height="100">
+                                <img src="<?= $gkTeamC['image'] ?>" alt="gk" width="100" height="100">
                                 <br>
-                                <?= $gkTeamA['name'] ?>
+                                <?= $gkTeamC['name'] ?>
                             </td>
                         </tr>
                     </table>
