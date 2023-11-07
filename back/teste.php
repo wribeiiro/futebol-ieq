@@ -57,11 +57,15 @@ $teams = randomizeTeams();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
 
+    html, body {
+        height: 100%;
+    }
+
     body {
         padding: 10px;
         background-image: url('https://www.wribeiiro.com/players/bg.jpg');
-        background-repeat: no-repeat;
         background-size: cover;
+        background-repeat: repeat;
         color: #fff;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
