@@ -54,16 +54,16 @@ function randomizeTeams(array $resultPlayers = [])
     		$gks[] = ['name' => $player, 'image' => $players[$player]];
     		continue;
     	}
-    	
+
         $sortedPlayers[] = ['name' => $player, 'image' => $players[$player]];
     }
 
 	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 3));
-	
+
 	array_unshift($teams[0], $gks[0]);
 	array_unshift($teams[1], $gks[1]);
 	array_unshift($teams[2], $gks[random_int(0, 1)]);
-    
+
     return $teams;
 }
 
