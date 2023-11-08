@@ -182,8 +182,8 @@ $teams = randomizeTeams($resultPlayers);
         padding-top: 20px;
     }
 
-    .mt-5 {
-        margin-top: 5px;
+    .mt-4 {
+        margin-top: 4px;
     }
     </style>
 </head>
@@ -208,33 +208,33 @@ $teams = randomizeTeams($resultPlayers);
                     <tr>
                         <td colspan="3">
                             <img src="<?= $player2TeamA['image'] ?>" alt="ata" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player2TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player2TeamA['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <img src="<?= $player3TeamA['image'] ?>" alt="rf" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player3TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player3TeamA['name'] ?></span></div>
                         </td>
                         <td>
                             <img src="<?= $player4TeamA['image'] ?>" alt="mid" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player4TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player4TeamA['name'] ?></span></div>
                         </td>
                         <td>
                             <img src="<?= $player5TeamA['image'] ?>" alt="lf" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player5TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player5TeamA['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <img src="<?= $player6TeamA['image'] ?>" alt="fix" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player6TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player6TeamA['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <img src="<?= $gkTeamA['image'] ?>" alt="gk" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $gkTeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $gkTeamA['name'] ?></span></div>
                         </td>
                     </tr>
                 </table>
@@ -245,15 +245,15 @@ $teams = randomizeTeams($resultPlayers);
                 <ul>
                     <li>
                         <img src="<?= $player7TeamA['image'] ?>" alt="ata" width="100" height="100">
-                        <div class="mt-5"><span class="badge"><?= $player7TeamA['name'] ?></span></div>
+                        <div class="mt-4"><span class="badge"><?= $player7TeamA['name'] ?></span></div>
                     </li>
                     <li>
                         <img src="<?= $player8TeamA['image'] ?>" alt="ata" width="100" height="100">
-                        <div class="mt-5"><span class="badge"><?= $player8TeamA['name'] ?></span></div>
+                        <div class="mt-4"><span class="badge"><?= $player8TeamA['name'] ?></span></div>
                     </li>
                     <li>
                         <img src="<?= $player9TeamA['image'] ?>" alt="ata" width="100" height="100">
-                        <div class="mt-5"><span class="badge"><?= $player9TeamA['name'] ?></span></div>
+                        <div class="mt-4"><span class="badge"><?= $player9TeamA['name'] ?></span></div>
                     </li>
                 </ul>
             </div>
@@ -276,33 +276,33 @@ $teams = randomizeTeams($resultPlayers);
                     <tr>
                         <td>
                             <img src="<?= $player2TeamB['image'] ?>" alt="ata" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player9TeamA['name'] ?></span></div>
+                            <div><span class="badge"><?= $player9TeamA['name'] ?></span></div>
                         </td>
                         <td>
                             <img src="<?= $player3TeamB['image'] ?>" alt="rf" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player3TeamB['name'] ?></span></div>
+                            <div><span class="badge"><?= $player3TeamB['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <img src="<?= $player4TeamB['image'] ?>" alt="mid" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player4TeamB['name'] ?></span></div>
+                            <div><span class="badge"><?= $player4TeamB['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <img src="<?= $player5TeamB['image'] ?>" alt="lf" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player5TeamB['name'] ?></span></div>
+                            <div><span class="badge"><?= $player5TeamB['name'] ?></span></div>
                         </td>
                         <td>
                             <img src="<?= $player6TeamB['image'] ?>" alt="fix" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $player6TeamB['name'] ?></span></div>
+                            <div><span class="badge"><?= $player6TeamB['name'] ?></span></div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <img src="<?= $gkTeamB['image'] ?>" alt="gk" width="100" height="100">
-                            <div class="mt-5"><span class="badge"><?= $gkTeamB['name'] ?></span></div>
+                            <div><span class="badge"><?= $gkTeamB['name'] ?></span></div>
                         </td>
                     </tr>
                 </table>
@@ -312,11 +312,11 @@ $teams = randomizeTeams($resultPlayers);
                 <ul>
                     <li>
                         <img src="<?= $player7TeamB['image'] ?>" alt="ata" width="100" height="100">
-                        <div class="mt-5"><span class="badge"><?= $player7TeamB['name'] ?></span></div>
+                        <div class="mt-4"><span class="badge"><?= $player7TeamB['name'] ?></span></div>
                     </li>
                     <li>
                         <img src="<?= $player8TeamB['image'] ?>" alt="ata" width="100" height="100">
-                        <div class="mt-5"><span class="badge"><?= $player8TeamB['name'] ?></span></div>
+                        <div class="mt-4"><span class="badge"><?= $player8TeamB['name'] ?></span></div>
                     </li>
                 </ul>
             </div>
