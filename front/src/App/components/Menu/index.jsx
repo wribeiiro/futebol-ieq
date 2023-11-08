@@ -1,10 +1,9 @@
 import React from "react";
 import LogoImg from "./../../assets/images/logo512x512.png";
 import { NavLink } from "react-router-dom";
-import { Token } from 'App/Utils/TokenManager'
+import { Token } from "./../../Utils/TokenManager";
 
 const Menu = () => {
-
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary">
 			<div className="container-fluid">

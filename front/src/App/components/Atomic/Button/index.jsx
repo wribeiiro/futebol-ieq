@@ -1,3 +1,5 @@
+import React from "react";
+
 const Button = ({ type, children, onClick }) => {
 	return (
 		<button
