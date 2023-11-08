@@ -58,11 +58,10 @@ function randomizeTeams(array $resultPlayers = [])
         $sortedPlayers[] = ['name' => $player, 'image' => $players[$player]];
     }
 
-	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 3));
+	$teams = array_chunk($sortedPlayers, ceil(count($sortedPlayers) / 2));
 
 	array_unshift($teams[0], $gks[0]);
 	array_unshift($teams[1], $gks[1]);
-	array_unshift($teams[2], $gks[random_int(0, 1)]);
 
     return $teams;
 }
@@ -71,10 +70,8 @@ $connection = Database::getInstance();
 $resultPlayers = $connection->query("SELECT name, image FROM players ORDER BY name ASC")->fetchAll(\PDO::FETCH_ASSOC);
 $teams = randomizeTeams($resultPlayers);
 
-[$gkTeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA] = $teams[0];
-[$gkTeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB] = $teams[1];
-[$gkTeamC, $player2TeamC, $player3TeamC, $player4TeamC, $player5TeamC, $player6TeamC] = $teams[2];
-
+[$gkTeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA, $player7TeamA, $player8TeamA, $player9TeamA] = $teams[0];
+[$gkTeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB, $player8TeamB] = $teams[1];
 ?>
 
 <!DOCTYPE html>
@@ -86,16 +83,10 @@ $teams = randomizeTeams($resultPlayers);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
 
-    html, body {
-        height: 100%;
-        /*transform: scale(0.9);*/
-    }
-
     body {
         padding: 10px;
-        background-image: url('https://www.wribeiiro.com/players/bg.jpg');
-        background-size: cover;
-        background-repeat: repeat;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.wribeiiro.com/players/bg.jpg') no-repeat center center fixed;
+        background-size: 100% 100%;
         color: #fff;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
@@ -126,7 +117,6 @@ $teams = randomizeTeams($resultPlayers);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin-top: 20px;
-        height: 100%;
     }
 
     h2 {
@@ -134,22 +124,19 @@ $teams = randomizeTeams($resultPlayers);
         margin-bottom: 5px;
     }
 
-    .wrapper {
+    .container {
         display: flex;
-    }
-
-    .row {
-        display: flex;
-        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        align-content: center;
         flex-wrap: wrap;
-        width: 100%;
-        margin-top: 5px;
     }
 
-    .col {
-        display: flex;
-        flex-direction: column;
+    .item {
+        width: 100%;
         flex: 1;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .head-team {
@@ -178,209 +165,156 @@ $teams = randomizeTeams($resultPlayers);
         vertical-align: middle;
     }
 
+    .badge {
+        background-color: #29AE54;
+        color: white;
+        padding: 4px 8px;
+        text-align: center;
+        border-radius: 5px;
+        text-shadow: none !important;
+    }
+
+    .subs {
+        background: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding-top: 20px;
+    }
     </style>
 </head>
 <body>
     <button type="button" onclick="window.location.reload()">Gerar equipes</button>
-    <div class='wrapper'>
-        <div class="row">
-            <div class="col">
-                <div class="head-team">
-                    <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
-                    <span>TEAM A</span>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-                <div class="field">
-                    <table class="squad">
 
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $player2TeamA['image'] ?>" alt="ata" width="100" height="100">
-                                <br>
-                                <?= $player2TeamA['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="<?= $player3TeamA['image'] ?>" alt="rf" width="100" height="100">
-                                <br>
-                                <?= $player3TeamA['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player4TeamA['image'] ?>" alt="mid" width="100" height="100">
-                                <br>
-                                <?= $player4TeamA['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player5TeamA['image'] ?>" alt="lf" width="100" height="100">
-                                <br>
-                                <?= $player5TeamA['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $player6TeamA['image'] ?>" alt="fix" width="100" height="100">
-                                <br>
-                                <?= $player6TeamA['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $gkTeamA['image'] ?>" alt="gk" width="100" height="100">
-                                <br>
-                                <?= $gkTeamA['name'] ?>
-                            </td>
-                        </tr>
-                    </table>
+    <div class="container">
+        <div class="item">
+            <div class="head-team">
+                <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
+                <span>TEAM A</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
-                <!--
-                <h2>BANCO A</h2>
-                <div class="subs">
-                    <ul>
-                        <li>
-                            <img src="<?= $player7TeamA['image'] ?>" alt="ata" width="100" height="100">
-                            <p><?= $player7TeamA['name'] ?></p>
-                        </li>
-                        <li>
-                            <img src="<?= $player8TeamA['image'] ?>" alt="ata" width="100" height="100">
-                            <p><?= $player8TeamA['name'] ?></p>
-                        </li>
-                    </ul>
-                </div>
-                -->
+            </div>
+            <div class="field">
+                <table class="squad">
+                    <tr>
+                        <td colspan="3">
+                            <img src="<?= $player2TeamA['image'] ?>" alt="ata" width="100" height="100">
+                            <div><p><span class="badge"><?= $player2TeamA['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="<?= $player3TeamA['image'] ?>" alt="rf" width="100" height="100">
+                            <div><p><span class="badge"><?= $player3TeamA['name'] ?></span></p></div>
+                        </td>
+                        <td>
+                            <img src="<?= $player4TeamA['image'] ?>" alt="mid" width="100" height="100">
+                            <div><p><span class="badge"><?= $player4TeamA['name'] ?></span></p></div>
+                        </td>
+                        <td>
+                            <img src="<?= $player5TeamA['image'] ?>" alt="lf" width="100" height="100">
+                            <div><p><span class="badge"><?= $player5TeamA['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <img src="<?= $player6TeamA['image'] ?>" alt="fix" width="100" height="100">
+                            <div><p><span class="badge"><?= $player6TeamA['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <img src="<?= $gkTeamA['image'] ?>" alt="gk" width="100" height="100">
+                            <div><p><span class="badge"><?= $gkTeamA['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="col">
-                <div class="head-team">
-                    <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
-                    <span>TEAM B</span>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-                <div class="field">
-                    <table class="squad">
-                        <tr>
-                            <td>
-                                <img src="<?= $player2TeamB['image'] ?>" alt="ata" width="100" height="100">
-                                <br>
-                                <?= $player2TeamB['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player3TeamB['image'] ?>" alt="rf" width="100" height="100">
-                                <br>
-                                <?= $player3TeamB['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $player4TeamB['image'] ?>" alt="mid" width="100" height="100">
-                                <br>
-                                <?= $player4TeamB['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="<?= $player5TeamB['image'] ?>" alt="lf" width="100" height="100">
-                                <br>
-                                <?= $player5TeamB['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player6TeamB['image'] ?>" alt="fix" width="100" height="100">
-                                <br>
-                                <?= $player6TeamB['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $gkTeamB['image'] ?>" alt="gk" width="100" height="100">
-                                <br>
-                                <?= $gkTeamB['name'] ?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!--
-                <h2>BANCO B</h2>
-                <div class="subs">
-                    <ul>
-                        <li>
-                            <img src="<?= $player7TeamB['image'] ?>" alt="ata" width="100" height="100">
-                            <p><?= $player7TeamB['name'] ?></p>
-                        </li>
-                        <li>
-                            <img src="<?= $player8TeamB['image'] ?>" alt="ata" width="100" height="100">
-                            <p><?= $player8TeamB['name'] ?></p>
-                        </li>
-                    </ul>
-                </div>
-                -->
+            <h2>BANCO A</h2>
+            <div class="subs">
+                <ul>
+                    <li>
+                        <img src="<?= $player7TeamA['image'] ?>" alt="ata" width="100" height="100">
+                        <div><p><span class="badge"><?= $player7TeamA['name'] ?></span></p></div>
+                    </li>
+                    <li>
+                        <img src="<?= $player8TeamA['image'] ?>" alt="ata" width="100" height="100">
+                        <div><p><span class="badge"><?= $player8TeamA['name'] ?></span></p></div>
+                    </li>
+                    <li>
+                        <img src="<?= $player9TeamA['image'] ?>" alt="ata" width="100" height="100">
+                        <div><p><span class="badge"><?= $player9TeamA['name'] ?></span></p></div>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="col">
-                <div class="head-team">
-                    <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
-                    <span>TEAM C</span>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+        <div class="item">
+            <div class="head-team">
+                <img src="https://www.wribeiiro.com/players/logo192.png" width="60">
+                <span>TEAM B</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
-                <div class="field">
-                    <table class="squad">
-                        <tr>
-                            <td>
-                                <img src="<?= $player2TeamC['image'] ?>" alt="ata" width="100" height="100">
-                                <br>
-                                <?= $player2TeamC['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player3TeamC['image'] ?>" alt="rf" width="100" height="100">
-                                <br>
-                                <?= $player3TeamC['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="<?= $player4TeamC['image'] ?>" alt="mid" width="100" height="100">
-                                <br>
-                                <?= $player4TeamC['name'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $player5TeamC['image'] ?>" alt="lf" width="100" height="100">
-                                <br>
-                                <?= $player5TeamC['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $player6TeamC['image'] ?>" alt="fix" width="100" height="100">
-                                <br>
-                                <?= $player6TeamC['name'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <img src="<?= $gkTeamC['image'] ?>" alt="gk" width="100" height="100">
-                                <br>
-                                <?= $gkTeamC['name'] ?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+            </div>
+            <div class="field">
+                <table class="squad">
+                    <tr>
+                        <td>
+                            <img src="<?= $player2TeamB['image'] ?>" alt="ata" width="100" height="100">
+                            <div><p><span class="badge"><?= $player9TeamA['name'] ?></span></p></div>
+                        </td>
+                        <td>
+                            <img src="<?= $player3TeamB['image'] ?>" alt="rf" width="100" height="100">
+                            <div><p><span class="badge"><?= $player3TeamB['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <img src="<?= $player4TeamB['image'] ?>" alt="mid" width="100" height="100">
+                            <div><p><span class="badge"><?= $player4TeamB['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="<?= $player5TeamB['image'] ?>" alt="lf" width="100" height="100">
+                            <div><p><span class="badge"><?= $player5TeamB['name'] ?></span></p></div>
+                        </td>
+                        <td>
+                            <img src="<?= $player6TeamB['image'] ?>" alt="fix" width="100" height="100">
+                            <div><p><span class="badge"><?= $player6TeamB['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <img src="<?= $gkTeamB['image'] ?>" alt="gk" width="100" height="100">
+                            <div><p><span class="badge"><?= $gkTeamB['name'] ?></span></p></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h2>BANCO B</h2>
+            <div class="subs">
+                <ul>
+                    <li>
+                        <img src="<?= $player7TeamB['image'] ?>" alt="ata" width="100" height="100">
+                        <div><p><span class="badge"><?= $player7TeamB['name'] ?></span></p></div>
+                    </li>
+                    <li>
+                        <img src="<?= $player8TeamB['image'] ?>" alt="ata" width="100" height="100">
+                        <div><p><span class="badge"><?= $player8TeamB['name'] ?></span></p></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
