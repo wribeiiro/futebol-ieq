@@ -34,7 +34,12 @@ class PlayerController extends Controller
     public function update($id, Request $request)
     {
         $player = Player::find($id);
-        $player->update($request->all());
+
+        foreach ($request->all() as $key => $value) {
+            $player->{$key} = $value;
+        }
+
+        $player->update();
 
         return response()->json('player updated!');
     }
