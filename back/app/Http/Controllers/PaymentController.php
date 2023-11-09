@@ -36,7 +36,12 @@ class PaymentController extends Controller
     public function update($id, Request $request)
     {
         $payment = Payment::find($id);
-        $payment->update($request->all());
+
+        foreach ($request->all() as $key => $value) {
+            $payment->{$key} = $value;
+        }
+
+        $payment->update();
 
         return response()->json('payment updated!');
     }

@@ -34,7 +34,12 @@ class SquadController extends Controller
     public function update($id, Request $request)
     {
         $squad = Squad::find($id);
-        $squad->update($request->all());
+
+        foreach ($request->all() as $key => $value) {
+            $squad->{$key} = $value;
+        }
+
+        $squad->update();
 
         return response()->json('squad updated!');
     }
