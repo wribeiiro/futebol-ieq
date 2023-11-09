@@ -8,7 +8,7 @@ const App = () => {
 	const [totalPaid, setTotalPaid] = useState(0);
 
 	const currentYear = new Date().getFullYear();
-	const gameCost = 480.00;
+	const gameCost = 450.00;
 	const costPerPlayer = 40.00;
 	const apiUrl = process.env.REACT_APP_ENV === "development"
 		? "http://localhost:8000"
