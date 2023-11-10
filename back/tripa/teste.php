@@ -89,7 +89,7 @@ $resultPlayers = $connection->query("SELECT * FROM players ORDER BY name ASC")->
 $teams = randomizeTeams($resultPlayers);
 
 [$gkTeamA, $player1TeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA, $player7TeamA, $player8TeamA] = $teams['teamA']['players'];
-[$gkTeamB, $player1TeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB] = $teams['teamB']['players'];
+[$gkTeamB, $player1TeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB, $player8TeamB] = $teams['teamB']['players'];
 ?>
 
 <!DOCTYPE html>
@@ -490,6 +490,17 @@ $teams = randomizeTeams($resultPlayers);
                         </div>
                         <div>
                             <?= $player7TeamB['name'] ?>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?= $player8TeamB['image'] ?>" alt="<?= $player8TeamB['id'] ?>" width="100" height="100">
+                        <div>
+                            <span class="badge">
+                                <span class="cm">CM</span> <?= $player8TeamB['overall'] ?>
+                            </span>
+                        </div>
+                        <div>
+                            <?= $player8TeamB['name'] ?>
                         </div>
                     </li>
                 </ul>
