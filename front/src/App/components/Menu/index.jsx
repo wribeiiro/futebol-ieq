@@ -19,6 +19,14 @@ const Menu = () => {
 						<li className="nav-item">
 							<NavLink className="nav-link" activeclassname="active" to="/payment">{Token(2)}</NavLink>
 						</li>
+
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/squad-builder">{Token(6)}</NavLink>
+						</li>
+
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/matches">{Token(7)}</NavLink>
+						</li>
 					</ul>
 				</div>
 			</div>

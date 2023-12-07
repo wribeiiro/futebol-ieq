@@ -1,28 +1,24 @@
 import React from 'react';
-import Button from './../../Atomic/Button';
 import Container from './../../Atomic/Container';
 import Breadcrumb, { Item } from './../../Atomic/Breadcrumb';
 import { Token } from  "./../../../Utils/TokenManager";
 import Utils from "./../../../Utils";
-import PaymentTable from '../../PaymentTable';
 
-const Payment = () => {
+const SquadBuilder = () => {
 	return (
 		<Container>
 			<Breadcrumb
 				items={[
 					<Item to={"/"} title={Token(3)} key={Utils.generateHash()} />,
-					<Item to={"/payment"} title={Token(2)} active key={Utils.generateHash()} />
+					<Item to={"/payment"} title={Token(6)} active key={Utils.generateHash()} />
 				]}
 			/>
 			<div className="d-grid gap-2">
-				<PaymentTable>
-
-				</PaymentTable>
+				times
 			</div>
 		</Container>
 
 	);
 }
 
-export default Payment;
+export default SquadBuilder;

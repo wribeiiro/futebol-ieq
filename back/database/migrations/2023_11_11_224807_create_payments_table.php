@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Game::class)->nullable();
             $table->float('value', 8, 2);
             $table->string('status');
+            $table->timestamps();
         });
     }
 
