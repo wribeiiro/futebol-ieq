@@ -23,7 +23,7 @@ export const Item = ({ to, title, active }) => {
 
 const Breadcrumb = ({ items }) => {
 	return (
-		<nav aria-label="breadcrumb">
+		<nav className="mt-3" aria-label="breadcrumb">
 			<ol className="breadcrumb">
 				{items.map(item => item)}
 			</ol>

@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('path_image')->nullable();
-            $table->string('ieq_member');
-            $table->string('goalkeeper');
+            $table->enum('ieq_member', ['Y', 'N'])->default('Y');
+            $table->enum('goalkeeper', ['Y', 'N'])->default('N');
+            $table->enum('injured_type', ['A', 'B', 'C', 'N'])->default('N');
             $table->string('email')->nullable();
+            $table->integer('overall')->default(80);
             $table->timestamps();
         });
     }
