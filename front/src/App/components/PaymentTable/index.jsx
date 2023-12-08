@@ -23,6 +23,16 @@ const PaymentTable = () => {
 	const [loading, setLoading] = useState(true);
 	const [selectedMonth, setSelectedMonth] = useState(`${currentMonth}/${currentYear}`);
 	const [totalPaid, setTotalPaid] = useState(0);
+	const [inputValues, setInputValues] = useState({});
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+
+		setInputValues({
+			...inputValues,
+			[name]: value,
+		});
+	};
 
 	const formatNumber = (value) => {
 		return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
@@ -41,12 +51,16 @@ const PaymentTable = () => {
 				setData(resData);
 
 				let paid = 0;
+				let initialInputValues = {};
 
 				resData.forEach(element => {
 					if (element.status === 'PAGO') paid = paid + Number(element.value);
+
+					initialInputValues['value-' + element.id] = element.value;
 				});
 
 				setTotalPaid(paid);
+				setInputValues(initialInputValues)
 			}
 
 			setLoading(false);
@@ -95,7 +109,8 @@ const PaymentTable = () => {
 		}
 
 		return data.map((element, key) => {
-			const {player: { id, name, path_image }, status, value} = element;
+			const { player: { name, path_image } } = element;
+			const { id, status } = element;
 
 			return (
 				<tr
@@ -112,14 +127,21 @@ const PaymentTable = () => {
 					</td>
 					<td className="align-middle"><b>{name}</b></td>
 					<td className="align-middle">
-						<input style={{ textAlign: 'center'}} className="form-control" type="number" value={value} id={'input-' + id}/>
+						<input
+							style={{ textAlign: 'center'}}
+							className="form-control"
+							type="number"
+							value={inputValues['value-' + id]}
+							id={'value-' + id}
+							name={'value-' + id}
+							onChange={handleInputChange}
+						/>
 					</td>
 					<td className="align-middle">
 						<select
 							className="form-control"
 							onChange={(e) => onChangeStatus(e)}
-							data-player-id={id}
-							data-player-name={name}
+							data-payment-id={id}
 						>
 							<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
 							<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
@@ -156,8 +178,37 @@ const PaymentTable = () => {
 		getPaymentData(event.target.value);
 	}
 
-	const onChangeStatus = (event) => {
-		alert('Atualizar status do: ' + event.target.getAttribute('data-player-id') + ' - ' + event.target.getAttribute('data-player-name'));
+	const changeStatusApi = async ({ id, value, status }) => {
+		const options = {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				value,
+				status
+			})
+		};
+
+		await fetch(apiUrl + '/' + id, options)
+			.then(response => response.json())
+			.then(data => {
+				console.log(data)
+			})
+			.catch(error => {
+				console.error('Error updating data:', error);
+			});
+	}
+
+	const onChangeStatus = async (event) => {
+		const data = {
+			id: event.target.getAttribute('data-payment-id'),
+			value: document.getElementById('value-' + event.target.getAttribute('data-payment-id')).value,
+			status: event.target.value
+		}
+
+		await changeStatusApi(data);
+		await getPaymentData();
 	}
 
 	return (
