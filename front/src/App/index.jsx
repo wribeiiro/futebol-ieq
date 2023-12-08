@@ -9,7 +9,7 @@ import './style.css';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename={'futebol-ieq/frontend'}>
             <Menu />
             <Routes>
                 <Route path="/" element={<Payment />} />

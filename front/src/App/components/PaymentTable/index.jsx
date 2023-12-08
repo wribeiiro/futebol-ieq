@@ -13,9 +13,10 @@ const padIndex = (str) => {
 const currentYear = new Date().getFullYear();
 const currentMonth = padIndex(new Date().getMonth());
 const gameCost = 450.00;
+
 const apiUrl = process.env.REACT_APP_ENV === "development"
-	? `${process.env.REACT_APP_ENDPOINT_API}/payment`
-	: "https://www.wribeiiro.com/sheets-api/back/index.php";
+	? `${process.env.REACT_APP_ENDPOINT_API_LOCAL}`
+	: `${process.env.REACT_APP_ENDPOINT_API}`;
 
 const PaymentTable = () => {
 
@@ -42,7 +43,7 @@ const PaymentTable = () => {
 		try {
 			setLoading(true);
 
-			const res = await fetch(`${apiUrl}?month=${month ?? selectedMonth}`);
+			const res = await fetch(`${apiUrl}/payment?month=${month ?? selectedMonth}`);
 			const resData = await res.json();
 
 			setData([]);
@@ -115,7 +116,7 @@ const PaymentTable = () => {
 			return (
 				<tr
 					key={key}
-					className={status === "PAGO" ? "table-success" : "table-warning"}
+					className={status === "PAGO" ? "table-success" : ""}
 				>
 					<td className="align-middle">
 						<img
@@ -190,7 +191,7 @@ const PaymentTable = () => {
 			})
 		};
 
-		await fetch(apiUrl + '/' + id, options)
+		await fetch(apiUrl + '/payment/' + id, options)
 			.then(response => response.json())
 			.then(data => {
 				console.log(data)
