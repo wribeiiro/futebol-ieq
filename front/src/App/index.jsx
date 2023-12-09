@@ -5,6 +5,7 @@ import Payment from "./components/Pages/Payment";
 import Home from "./components/Pages/Home";
 import NotFound from "./components/Pages/NotFound";
 import SquadBuilder from "./components/Pages/SquadBuilder";
+import Matches from "./components/Pages/Matches";
 import './style.css';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
                 <Route path="/" element={<Payment />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/payment" element={<Payment />} />
-                <Route path="/matches" element={<Home />} />
+                <Route path="/matches" element={<Matches />} />
                 <Route path="/squad-builder" element={<SquadBuilder />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
