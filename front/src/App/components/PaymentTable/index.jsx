@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./style.css";
+import PlayerImageModal from "../PlayerImageModal";
 
 const padIndex = (str) => {
 	str = str.toString();
@@ -11,7 +12,7 @@ const padIndex = (str) => {
 }
 
 const currentYear = new Date().getFullYear();
-const currentMonth = padIndex(new Date().getMonth());
+const currentMonth = padIndex(new Date().getMonth() + 1);
 const gameCost = 450.00;
 
 const apiUrl = process.env.REACT_APP_ENV === "development"
@@ -78,10 +79,10 @@ const PaymentTable = () => {
 	const renderTableHeader = () => {
 		return (
 			<tr>
-				<th style={{ width: "5%" }}></th>
-				<th style={{ width: "40%" }}>NOME</th>
-				<th style={{ width: "20%", textAlign: 'center'}}>VALOR</th>
-				<th style={{ width: "25%" }}>SITUAÇÃO</th>
+				<th className="bg-success" style={{ width: "5%" }}></th>
+				<th className="bg-success" style={{ width: "25%" }}>NOME</th>
+				<th className="bg-success" style={{ width: "27.5%", textAlign: 'center'}}>VALOR</th>
+				<th className="bg-success" style={{ width: "32.5%" }}>SITUAÇÃO</th>
 			</tr>
 		);
 	}
@@ -91,7 +92,7 @@ const PaymentTable = () => {
 			return (
 				<tr>
 					<td></td>
-					<td>Carregando dados...</td>
+					<td>Carregando...</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -102,7 +103,7 @@ const PaymentTable = () => {
 			return (
 				<tr>
 					<td></td>
-					<td>Nenhum registro encontrado para esse período...</td>
+					<td>Nenhum registro encontrado.</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -114,41 +115,42 @@ const PaymentTable = () => {
 			const { id, status } = element;
 
 			return (
-				<tr
-					key={key}
-					className={status === "PAGO" ? "table-success" : ""}
-				>
-					<td className="align-middle">
-						<img
-							src={path_image}
-							alt={name}
-							width="60"
-							height="60"
-						/>
-					</td>
-					<td className="align-middle"><b>{name}</b></td>
-					<td className="align-middle">
-						<input
-							style={{ textAlign: 'center'}}
-							className="form-control"
-							type="number"
-							value={inputValues['value-' + id]}
-							id={'value-' + id}
-							name={'value-' + id}
-							onChange={handleInputChange}
-						/>
-					</td>
-					<td className="align-middle">
-						<select
-							className="form-control"
-							onChange={(e) => onChangeStatus(e)}
-							data-payment-id={id}
-						>
-							<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
-							<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
-						</select>
-					</td>
-				</tr>
+				<>
+					<tr
+						key={key}
+						className={status === "PAGO" ? "table-success" : ""}
+					>
+						<td className="align-middle">
+							<PlayerImageModal
+								pathImage={path_image}
+								name={name}
+								id={id}
+							/>
+						</td>
+						<td className="align-middle font-uppercase"><b>{name}</b></td>
+						<td className="align-middle">
+							<input
+								style={{ textAlign: 'center'}}
+								className="form-control font-weight-bold"
+								type="number"
+								value={inputValues['value-' + id]}
+								id={'value-' + id}
+								name={'value-' + id}
+								onChange={handleInputChange}
+							/>
+						</td>
+						<td className="align-middle">
+							<select
+								className="form-control font-weight-bold"
+								onChange={(e) => onChangeStatus(e)}
+								data-payment-id={id}
+							>
+								<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
+								<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
+							</select>
+						</td>
+					</tr>
+				</>
 			);
 		});
 	}
@@ -158,9 +160,9 @@ const PaymentTable = () => {
 
 		return (
 			<>
-				<label className="form-label" htmlFor="month"><b>SELECIONE MÊS/ANO: </b></label>
+				<label className="form-label font-weight-bold" htmlFor="month">SELECIONE MÊS/ANO: </label>
 				<select
-					className="form-control"
+					className="form-control font-weight-bold"
 					name="month"
 					id="month"
 					onChange={(e) => onChangeFilter(e)}
@@ -212,18 +214,36 @@ const PaymentTable = () => {
 		await getPaymentData();
 	}
 
+	const toPay = gameCost - totalPaid;
+
 	return (
 		<>
-			<div>
-				<table className="table">
-					<tbody>
-						<tr>
-							<td className="table-info text-center"><b>HORÁRIO: {formatNumber(gameCost)}</b></td>
-							<td className="table-success text-center"><b>PAGO: {formatNumber(totalPaid)}</b></td>
-							<td className="table-warning text-center"><b>FALTA PAGAR: {formatNumber(gameCost - totalPaid)}</b></td>
-						</tr>
-					</tbody>
-				</table>
+			<div className="row row-cols-md-3 g-4">
+				<div className="col">
+					<div className="card text-white text-center bg-primary mb-3">
+						<div className="card-body">
+							<p className="card-text font-weight-bold">HORÁRIO <br></br> {formatNumber(gameCost)}</p>
+						</div>
+					</div>
+				</div>
+
+				<div className="col">
+					<div className="card text-white text-center bg-success mb-3">
+						<div className="card-body">
+							<p className="card-text font-weight-bold">PAGO <br></br> {formatNumber(totalPaid)}</p>
+						</div>
+					</div>
+				</div>
+				<div className="col">
+					<div className={"card text-white text-center mb-3 " + (toPay < 0 ? "bg-info" : "bg-warning")}>
+						<div className="card-body">
+							<p className="card-text font-weight-bold">
+								{ toPay < 0 ? '+ SALDO' : 'A PAGAR'} <br></br>
+								{formatNumber(toPay < 0 ? -toPay : toPay)}
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div className="filters">

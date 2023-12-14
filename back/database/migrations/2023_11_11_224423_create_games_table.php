@@ -16,7 +16,9 @@ return new class extends Migration
             $table->id();
             $table->date('date_game');
             $table->foreignIdFor(Team::class, 'id_team_a');
+            $table->integer('goals_team_a');
             $table->foreignIdFor(Team::class, 'id_team_b');
+            $table->integer('goals_team_b');
             $table->string('status');
         });
     }

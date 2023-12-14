@@ -28,6 +28,9 @@ const Menu = () => {
 							<NavLink className="nav-link" to="/matches">{Token(7)}</NavLink>
 						</li>
 					</ul>
+					<span className="navbar-text">
+						<NavLink className="nav-link" to="/profile"><i className="fas fa-user"></i> {Token(8)}</NavLink>
+					</span>
 				</div>
 			</div>
 		</nav>

@@ -12,6 +12,7 @@
         "match-sorter": "^6.3.1",
         "popper.js": "^1.16.1",
         "react": "^18.2.0",
+        "react-bootstrap": "^2.9.1",
         "react-dom": "^18.2.0",
         "react-i18next": "^13.3.1",
         "react-ios-pwa-prompt": "^1.8.4",
