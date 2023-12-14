@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\SquadController;
@@ -28,4 +29,5 @@ Route::middleware('api')->group(function () {
     Route::resource('payment', PaymentController::class);
     Route::resource('player', PlayerController::class);
     Route::resource('squad', SquadController::class);
+    Route::resource('game', GameController::class);
 });

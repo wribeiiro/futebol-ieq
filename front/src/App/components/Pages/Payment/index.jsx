@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './../../Atomic/Button';
 import Container from './../../Atomic/Container';
 import Breadcrumb, { Item } from './../../Atomic/Breadcrumb';
 import { Token } from  "./../../../Utils/TokenManager";
@@ -16,9 +15,7 @@ const Payment = () => {
 				]}
 			/>
 			<div className="d-grid gap-2">
-				<PaymentTable>
-
-				</PaymentTable>
+				<PaymentTable />
 			</div>
 		</Container>
 

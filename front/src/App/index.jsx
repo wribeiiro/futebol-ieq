@@ -6,6 +6,7 @@ import Home from "./components/Pages/Home";
 import NotFound from "./components/Pages/NotFound";
 import SquadBuilder from "./components/Pages/SquadBuilder";
 import Matches from "./components/Pages/Matches";
+import Profile from "./components/Pages/Profile";
 import './style.css';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/matches" element={<Matches />} />
                 <Route path="/squad-builder" element={<SquadBuilder />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>

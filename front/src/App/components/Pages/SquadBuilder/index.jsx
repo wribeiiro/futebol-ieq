@@ -6,7 +6,7 @@ import Utils from "./../../../Utils";
 
 const SquadBuilder = () => {
 	return (
-		<Container>
+		<Container style={{ overflow: 'hidden !important' }}>
 			<Breadcrumb
 				items={[
 					<Item to={"/"} title={Token(3)} key={Utils.generateHash()} />,
@@ -14,17 +14,18 @@ const SquadBuilder = () => {
 				]}
 			/>
 			<div className="d-grid gap-2">
-				<img
-					src="https://www.wribeiiro.com/players/team-a.jpg"
-					alt="squad"
-					width="100%"
-				/>
-
-				<img
-					src="https://www.wribeiiro.com/players/team-b.jpg"
-					alt="squad"
-					width="100%"
-				/>
+				<iframe
+					src="https://www.wribeiiro.com/sheets-api/back/teste.php"
+					frameborder="0"
+					width={"100%"}
+					height={"auto"}
+					title={"teams"}
+					style={{
+						height: "100vh",
+						overflow: "hidden"
+					}}
+				>
+				</iframe>
 			</div>
 		</Container>
 	);
