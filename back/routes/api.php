@@ -30,4 +30,6 @@ Route::middleware('api')->group(function () {
     Route::resource('player', PlayerController::class);
     Route::resource('squad', SquadController::class);
     Route::resource('game', GameController::class);
+
+    Route::get('/balance', [PaymentController::class, 'balance'])->name('balance');
 });

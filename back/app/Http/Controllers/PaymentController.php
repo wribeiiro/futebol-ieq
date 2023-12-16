@@ -60,4 +60,15 @@ class PaymentController extends Controller
 
         return response()->json('payment deleted!');
     }
+
+    public function balance(Request $request)
+    {
+        $monthYear = $request->input('month');
+
+        return response()->json([
+            'balance' => Payment::balance(),
+            'total_paid' => Payment::totalPaid(),
+            'total_this_month' => Payment::totalPaidThisMonth($monthYear),
+        ]);
+    }
 }

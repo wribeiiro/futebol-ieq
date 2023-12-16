@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./style.css";
 import PlayerImageModal from "../PlayerImageModal";
+import BalanceCard from "../BalanceCard";
 
 const padIndex = (str) => {
 	str = str.toString();
@@ -13,7 +14,6 @@ const padIndex = (str) => {
 
 const currentYear = new Date().getFullYear();
 const currentMonth = padIndex(new Date().getMonth() + 1);
-const gameCost = 450.00;
 
 const apiUrl = process.env.REACT_APP_ENV === "development"
 	? `${process.env.REACT_APP_ENDPOINT_API_LOCAL}`
@@ -24,7 +24,6 @@ const PaymentTable = () => {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [selectedMonth, setSelectedMonth] = useState(`${currentMonth}/${currentYear}`);
-	const [totalPaid, setTotalPaid] = useState(0);
 	const [inputValues, setInputValues] = useState({});
 
 	const handleInputChange = (e) => {
@@ -34,10 +33,6 @@ const PaymentTable = () => {
 			...inputValues,
 			[name]: value,
 		});
-	};
-
-	const formatNumber = (value) => {
-		return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
 	};
 
 	const getPaymentData = useCallback(async (month) => {
@@ -52,16 +47,12 @@ const PaymentTable = () => {
 			if (resData) {
 				setData(resData);
 
-				let paid = 0;
 				let initialInputValues = {};
 
 				resData.forEach(element => {
-					if (element.status === 'PAGO') paid = paid + Number(element.value);
-
 					initialInputValues['value-' + element.id] = element.value;
 				});
 
-				setTotalPaid(paid);
 				setInputValues(initialInputValues)
 			}
 
@@ -214,37 +205,11 @@ const PaymentTable = () => {
 		await getPaymentData();
 	}
 
-	const toPay = gameCost - totalPaid;
-
 	return (
 		<>
-			<div className="row row-cols-md-3 g-4">
-				<div className="col">
-					<div className="card text-white text-center bg-primary mb-3">
-						<div className="card-body">
-							<p className="card-text font-weight-bold">HORÁRIO <br></br> {formatNumber(gameCost)}</p>
-						</div>
-					</div>
-				</div>
-
-				<div className="col">
-					<div className="card text-white text-center bg-success mb-3">
-						<div className="card-body">
-							<p className="card-text font-weight-bold">PAGO <br></br> {formatNumber(totalPaid)}</p>
-						</div>
-					</div>
-				</div>
-				<div className="col">
-					<div className={"card text-white text-center mb-3 " + (toPay < 0 ? "bg-info" : "bg-warning")}>
-						<div className="card-body">
-							<p className="card-text font-weight-bold">
-								{ toPay < 0 ? '+ SALDO' : 'A PAGAR'} <br></br>
-								{formatNumber(toPay < 0 ? -toPay : toPay)}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<BalanceCard
+				month={selectedMonth}
+			/>
 
 			<div className="filters">
 				{renderFilters()}
