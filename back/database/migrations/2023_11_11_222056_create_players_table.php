@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('injured_type', ['A', 'B', 'C', 'N'])->default('N');
             $table->string('email')->nullable();
             $table->integer('overall')->default(80);
+            $table->enum('active', ['Y', 'N'])->default('Y');
             $table->timestamps();
         });
     }

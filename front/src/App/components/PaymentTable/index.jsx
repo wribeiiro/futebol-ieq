@@ -74,7 +74,7 @@ const PaymentTable = () => {
 				<th className="bg-success" style={{ width: "5%" }}></th>
 				<th className="bg-success" style={{ width: "25%" }}>NOME</th>
 				<th className="bg-success" style={{ width: "27.5%", textAlign: 'center' }}>VALOR</th>
-				<th className="bg-success" style={{ width: "32.5%" }}>SITUAÇÃO</th>
+				<th className="bg-success" style={{ width: "32.5%" }}>PAGOU</th>
 			</tr>
 		);
 	}
@@ -140,8 +140,8 @@ const PaymentTable = () => {
 							onChange={(e) => onChangeStatus(e)}
 							data-payment-id={id}
 						>
-							<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
-							<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
+							<option value={"PAGO"} selected={status === "PAGO"}>SIM</option>
+							<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO</option>
 						</select>
 					</td>
 				</tr>

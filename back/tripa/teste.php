@@ -130,7 +130,7 @@ $teams = randomizeTeams($resultPlayers);
     }
 
     .field {
-        background-image: url('https://www.wribeiiro.com/players/field.png');
+        background-image: url('https://www.wribeiiro.com/players/field5.png');
         background-size: 100% 100%;
         margin-top: 10px;
         max-height: 530px;

@@ -10,11 +10,11 @@ const GameTable = ({data}) => {
 				<thead>
 					<tr>
 						<th>Data</th>
-						<th style={{textAlign: 'right'}}>Mandante</th>
+						<th style={{textAlign: 'right'}}>Casa</th>
 						<th style={{textAlign: 'center'}}></th>
 						<th style={{textAlign: 'center'}}></th>
 						<th style={{textAlign: 'center'}}></th>
-						<th style={{textAlign: 'left'}}>Visitante</th>
+						<th style={{textAlign: 'left'}}>Fora</th>
 					</tr>
 				</thead>
 				<tbody>
