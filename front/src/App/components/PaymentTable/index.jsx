@@ -102,8 +102,12 @@ const PaymentTable = () => {
 		}
 
 		return data.map((element, key) => {
-			const { player: { name, path_image } } = element;
+			const { player: { name, path_image, active } } = element;
 			const { id, status } = element;
+
+			if (active !== 'Y') {
+				return null;
+			}
 
 			return (
 				<>
@@ -148,6 +152,11 @@ const PaymentTable = () => {
 
 	const renderFilters = () => {
 		const months = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
+		let monthYear = [];
+
+		for (let year = currentYear; year >= 2023; year--) {
+			months.forEach((month, index) => monthYear.push({'value': index, 'month': month, 'year': year}));
+		}
 
 		return (
 			<>
@@ -159,9 +168,11 @@ const PaymentTable = () => {
 					onChange={(e) => onChangeFilter(e)}
 					value={selectedMonth}
 				>
-					{months.map((month, index) => {
-						return <option value={padIndex(index + 1) + "/" + currentYear}>{month}/{currentYear}</option>
-					})}
+					{
+						monthYear.map((month) => {
+							return <option value={padIndex(month.value + 1) + "/" + month.year}>{month.month + "/" + month.year}</option>
+						})
+					}
 				</select>
 			</>
 		);

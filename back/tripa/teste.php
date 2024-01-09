@@ -89,7 +89,7 @@ $resultPlayers = $connection->query("SELECT *, path_image FROM players ORDER BY 
 $teams = randomizeTeams($resultPlayers);
 
 [$gkTeamA, $player1TeamA, $player2TeamA, $player3TeamA, $player4TeamA, $player5TeamA, $player6TeamA, $player7TeamA, $player8TeamA] = $teams['teamA']['players'];
-[$gkTeamB, $player1TeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB, $player8TeamB] = $teams['teamB']['players'];
+[$gkTeamB, $player1TeamB, $player2TeamB, $player3TeamB, $player4TeamB, $player5TeamB, $player6TeamB, $player7TeamB] = $teams['teamB']['players'];
 ?>
 
 <!DOCTYPE html>
@@ -181,6 +181,13 @@ $teams = randomizeTeams($resultPlayers);
     .fa-ambulance {
         font-size: 14px;
         color: #DA4970;
+        vertical-align: middle;
+    }
+
+    .fa-plus, .fa-bandage, .fa-bandage {
+        font-size: 14px;
+        color: #DA4970;
+        transform: rotate(-35deg);
     }
 
     ul {
@@ -304,7 +311,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <span class="badge">
                                     <span class="cf">CF</span>
                                     <?= $player1TeamA['overall'] ?>
-                                    <?= $player1TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player1TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -321,7 +328,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <span class="badge">
                                     <span class="lm">LM</span>
                                     <?= $player2TeamA['overall'] ?>
-                                    <?= $player2TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player2TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -335,7 +342,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="cm">CM</span> <?= $player3TeamA['overall'] ?>
-                                    <?= $player3TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player3TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -349,7 +356,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="rm">RM</span> <?= $player4TeamA['overall'] ?>
-                                    <?= $player4TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player4TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -365,7 +372,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="cb">CB</span> <?= $player5TeamA['overall'] ?>
-                                    <?= $player5TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player5TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -381,7 +388,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="gk">GK</span> <?= $gkTeamA['overall'] ?>
-                                    <?= $gkTeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $gkTeamA['injured_type'] == 'Y' ? '<i class="fa-solid fa-bandage "></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -402,7 +409,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <div>
                                     <span class="badge">
                                         <span class="cm">CM</span> <?= $player6TeamA['overall'] ?>
-                                        <?= $player6TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                        <?= $player6TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                     </span>
                                 </div>
                                 <div>
@@ -418,7 +425,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <div>
                                     <span class="badge">
                                         <span class="cf">CF</span> <?= $player7TeamA['overall'] ?>
-                                        <?= $player7TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                        <?= $player7TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                     </span>
                                 </div>
                                 <div>
@@ -434,7 +441,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <div>
                                     <span class="badge">
                                         <span class="cb">CB</span> <?= $player8TeamA['overall'] ?>
-                                        <?= $player8TeamA['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                        <?= $player8TeamA['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                     </span>
                                 </div>
                                 <div>
@@ -446,7 +453,9 @@ $teams = randomizeTeams($resultPlayers);
                 </ul>
             </div>
         </div>
+    </div>
 
+    <div class="flex-container" style="margin-top: 60px;">
         <div class="flex-item">
             <div class="head-team">
                 <img src="https://www.wribeiiro.com/players/logo192.png" width="120">
@@ -471,7 +480,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="lwf">LWF</span> <?= $player1TeamB['overall'] ?>
-                                    <?= $player1TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player1TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -485,7 +494,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="rwf">RWF</span> <?= $player2TeamB['overall'] ?>
-                                    <?= $player2TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player2TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -501,7 +510,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="cm">CM</span> <?= $player3TeamB['overall'] ?>
-                                    <?= $player3TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player3TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -517,7 +526,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="cb">CB</span> <?= $player4TeamB['overall'] ?>
-                                    <?= $player4TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player4TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -531,7 +540,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="cb">CB</span> <?= $player5TeamB['overall'] ?>
-                                    <?= $player5TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $player5TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -547,7 +556,7 @@ $teams = randomizeTeams($resultPlayers);
                             <div>
                                 <span class="badge">
                                     <span class="gk">GK</span> <?= $gkTeamB['overall'] ?>
-                                    <?= $gkTeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                    <?= $gkTeamB['injured_type'] == 'Y' ? '<i class="fa-solid fa-bandage "></i>' : ''?>
                                 </span>
                             </div>
                             <div>
@@ -568,7 +577,7 @@ $teams = randomizeTeams($resultPlayers);
                                 <div>
                                     <span class="badge">
                                         <span class="cf">CF</span> <?= $player6TeamB['overall'] ?>
-                                        <?= $player6TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                        <?= $player6TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                     </span>
                                 </div>
                                 <div>
@@ -584,27 +593,11 @@ $teams = randomizeTeams($resultPlayers);
                                 <div>
                                     <span class="badge">
                                         <span class="cb">CB</span> <?= $player7TeamB['overall'] ?>
-                                        <?= $player7TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
+                                        <?= $player7TeamB['injured_type'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
                                     </span>
                                 </div>
                                 <div>
                                     <?= $player7TeamB['name'] ?>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="container">
-                            <div id="drag<?= $player8TeamB['id'] ?>" draggable="true" class="player-card">
-                                <img src="<?= $player8TeamB['path_image'] ?>" alt="<?= $player8TeamB['id'] ?>" width="90" height="90">
-                                <div>
-                                    <span class="badge">
-                                        <span class="cm">CM</span> <?= $player8TeamB['overall'] ?>
-                                        <?= $player8TeamB['injured'] == 'Y' ? '<i class="fas fa-ambulance"></i>' : ''?>
-                                    </span>
-                                </div>
-                                <div>
-                                    <?= $player8TeamB['name'] ?>
                                 </div>
                             </div>
                         </div>

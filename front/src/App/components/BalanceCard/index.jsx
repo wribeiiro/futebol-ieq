@@ -6,6 +6,7 @@ const apiUrl = process.env.REACT_APP_ENV === "development"
 	: `${process.env.REACT_APP_ENDPOINT_API}`;
 
 const gameCost = 450.00;
+const shouldRenderBalance = false;
 
 const BalanceCard = ({ month }) => {
 	const [balance, setBalance] = useState(0);
@@ -40,6 +41,31 @@ const BalanceCard = ({ month }) => {
 		}
 	}, [month]);
 
+	const renderTotalBalance = () => {
+		return (
+			<div className="row row-cols-md-2 g-4">
+				<div className="col">
+					<div className="card text-white text-center bg-success mb-3">
+						<div className="card-body">
+							<p className="card-text font-weight-bold">TOTAL PAGO <br></br> {formatNumber(totalPaid.total)}</p>
+						</div>
+					</div>
+				</div>
+
+				<div className="col">
+					<div className={"card text-white text-center mb-3 " + (balance > 0 ? "bg-info" : "bg-warning")}>
+						<div className="card-body">
+							<p className="card-text font-weight-bold">
+								{ balance > 0 ? '+ SALDO' : 'A PAGAR'} <br></br>
+								{formatNumber(balance)}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
 	useEffect(() => {
 		getBalanceData();
 	}, [getBalanceData]);
@@ -64,26 +90,7 @@ const BalanceCard = ({ month }) => {
 				</div>
 			</div>
 
-			<div className="row row-cols-md-2 g-4">
-				<div className="col">
-					<div className="card text-white text-center bg-success mb-3">
-						<div className="card-body">
-							<p className="card-text font-weight-bold">TOTAL PAGO <br></br> {formatNumber(totalPaid.total)}</p>
-						</div>
-					</div>
-				</div>
-
-				<div className="col">
-					<div className={"card text-white text-center mb-3 " + (balance > 0 ? "bg-info" : "bg-warning")}>
-						<div className="card-body">
-							<p className="card-text font-weight-bold">
-								{ balance > 0 ? '+ SALDO' : 'A PAGAR'} <br></br>
-								{formatNumber(balance)}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			{shouldRenderBalance ? renderTotalBalance() : null}
 		</>
 	);
 }
