@@ -88,7 +88,7 @@
 #40 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #41 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #42 {main}
-"} 
+"}
 [2023-12-07 14:49:35] local.ERROR: Method App\Http\Controllers\PaymentController::index does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\PaymentController::index does not exist. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): Illuminate\\Routing\\Controller->__call('index', Array)
@@ -130,7 +130,7 @@
 #36 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #38 {main}
-"} 
+"}
 [2023-12-07 14:49:47] local.ERROR: Method App\Http\Controllers\PaymentController::index does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\PaymentController::index does not exist. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): Illuminate\\Routing\\Controller->__call('index', Array)
@@ -172,7 +172,7 @@
 #36 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #38 {main}
-"} 
+"}
 [2023-12-07 14:50:09] local.ERROR: Method App\Http\Controllers\PaymentController::index does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\PaymentController::index does not exist. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): Illuminate\\Routing\\Controller->__call('index', Array)
@@ -214,7 +214,7 @@
 #36 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #38 {main}
-"} 
+"}
 [2023-12-07 14:50:58] local.ERROR: Call to undefined relationship [player] on model [App\Models\Payment]. {"exception":"[object] (Illuminate\\Database\\Eloquent\\RelationNotFoundException(code: 0): Call to undefined relationship [player] on model [App\\Models\\Payment]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\RelationNotFoundException.php:35)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(777): Illuminate\\Database\\Eloquent\\RelationNotFoundException::make(Object(App\\Models\\Payment), 'player')
@@ -263,7 +263,7 @@
 #43 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #44 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #45 {main}
-"} 
+"}
 [2023-12-07 14:52:32] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wribei64_futi.squads' doesn't exist (Connection: mysql, SQL: select * from `squads`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wribei64_futi.squads' doesn't exist (Connection: mysql, SQL: select * from `squads`) at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:760)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
@@ -367,7 +367,7 @@
 #47 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #48 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #49 {main}
-"} 
+"}
 [2023-12-16 13:55:48] local.ERROR: Invalid route action: [App\Http\Controllers\PaymentController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [App\\Http\\Controllers\\PaymentController]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
@@ -411,7 +411,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
-"} 
+"}
 [2023-12-16 13:56:20] local.ERROR: Invalid route action: [App\Http\Controllers\PaymentController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [App\\Http\\Controllers\\PaymentController]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
@@ -455,7 +455,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
-"} 
+"}
 [2023-12-16 13:56:41] local.ERROR: Invalid route action: [App\Http\Controllers\PaymentController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [App\\Http\\Controllers\\PaymentController]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
@@ -499,7 +499,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
-"} 
+"}
 [2023-12-16 13:56:44] local.ERROR: Invalid route action: [App\Http\Controllers\PaymentController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [App\\Http\\Controllers\\PaymentController]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
@@ -543,7 +543,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
-"} 
+"}
 [2023-12-16 13:56:59] local.ERROR: Invalid route action: [App\Http\Controllers\PaymentController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [App\\Http\\Controllers\\PaymentController]. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
@@ -587,7 +587,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
-"} 
+"}
 [2023-12-16 14:19:16] local.ERROR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::GAME_COST}
                 FROM
                     payments
@@ -722,7 +722,7 @@
 #44 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #45 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #46 {main}
-"} 
+"}
 [2023-12-16 14:20:30] local.ERROR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
         payments
     WHERE
@@ -839,7 +839,7 @@
 #44 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #45 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #46 {main}
-"} 
+"}
 [2023-12-16 14:21:43] local.ERROR: Cannot use object of type stdClass as array {"exception":"[object] (Error(code: 0): Cannot use object of type stdClass as array at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Models\\Payment.php:54)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php(66): App\\Models\\Payment::balance()
@@ -882,7 +882,7 @@
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #39 {main}
-"} 
+"}
 [2023-12-16 14:50:14] local.ERROR: App\Models\Payment::totalPaidThisMonth(): Argument #1 ($monthYear) must be of type string, null given, called in C:\xampp\htdocs\scripts-php\futebol-ieq\back\app\Http\Controllers\PaymentController.php on line 71 {"exception":"[object] (TypeError(code: 0): App\\Models\\Payment::totalPaidThisMonth(): Argument #1 ($monthYear) must be of type string, null given, called in C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php on line 71 at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Models\\Payment.php:80)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php(71): App\\Models\\Payment::totalPaidThisMonth(NULL)
@@ -925,7 +925,7 @@
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #39 {main}
-"} 
+"}
 [2024-01-09 13:32:46] local.ERROR: Method Illuminate\Database\Eloquent\Collection::toSql does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method Illuminate\\Database\\Eloquent\\Collection::toSql does not exist. at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Macroable\\Traits\\Macroable.php:113)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php(26): Illuminate\\Support\\Collection->__call('toSql', Array)
@@ -968,7 +968,7 @@
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #39 {main}
-"} 
+"}
 [2024-01-09 13:33:21] local.ERROR: Class "App\Http\Controllers\DB" not found {"exception":"[object] (Error(code: 0): Class \"App\\Http\\Controllers\\DB\" not found at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php:28)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\PaymentController->index(Object(Illuminate\\Http\\Request))
@@ -1010,7 +1010,7 @@
 #36 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #38 {main}
-"} 
+"}
 [2024-01-09 13:40:50] local.ERROR: Call to a member function getRelationExistenceQuery() on array {"exception":"[object] (Error(code: 0): Call to a member function getRelationExistenceQuery() on array at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Concerns\\QueriesRelationships.php:53)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Concerns\\QueriesRelationships.php(152): Illuminate\\Database\\Eloquent\\Builder->has(Array, '>=', 1, 'and', NULL)
@@ -1057,7 +1057,7 @@
 #41 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #42 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #43 {main}
-"} 
+"}
 [2024-01-09 13:55:07] local.ERROR: Undefined array key "items" {"exception":"[object] (ErrorException(code: 0): Undefined array key \"items\" at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php:25)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(250): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Undefined array...', 'C:\\\\xampp\\\\htdocs...', 25)
@@ -1101,7 +1101,7 @@
 #38 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #39 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #40 {main}
-"} 
+"}
 [2024-01-09 13:56:04] local.ERROR: Call to a member function toArray() on array {"exception":"[object] (Error(code: 0): Call to a member function toArray() on array at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php:25)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\PaymentController->index(Object(Illuminate\\Http\\Request))
@@ -1143,7 +1143,7 @@
 #36 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #37 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #38 {main}
-"} 
+"}
 [2024-01-09 13:59:03] local.ERROR: syntax error, unexpected token ";", expecting ")" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \";\", expecting \")\" at C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\app\\Http\\Controllers\\PaymentController.php:24)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\xampp\\\\htdocs...')
@@ -1177,4 +1177,4 @@
 #28 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #29 C:\\xampp\\htdocs\\scripts-php\\futebol-ieq\\back\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #30 {main}
-"} 
+"}

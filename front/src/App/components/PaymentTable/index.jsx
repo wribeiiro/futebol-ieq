@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import "./style.css";
 import PlayerImageModal from "../PlayerImageModal";
 import BalanceCard from "../BalanceCard";
+import Utils from "../../Utils";
 
 const padIndex = (str) => {
 	str = str.toString();
@@ -72,7 +73,7 @@ const PaymentTable = () => {
 			<tr>
 				<th className="bg-success" style={{ width: "5%" }}></th>
 				<th className="bg-success" style={{ width: "25%" }}>NOME</th>
-				<th className="bg-success" style={{ width: "27.5%", textAlign: 'center'}}>VALOR</th>
+				<th className="bg-success" style={{ width: "27.5%", textAlign: 'center' }}>VALOR</th>
 				<th className="bg-success" style={{ width: "32.5%" }}>SITUAÇÃO</th>
 			</tr>
 		);
@@ -110,42 +111,40 @@ const PaymentTable = () => {
 			}
 
 			return (
-				<>
-					<tr
-						key={key}
-						className={status === "PAGO" ? "table-success" : ""}
-					>
-						<td className="align-middle">
-							<PlayerImageModal
-								pathImage={path_image}
-								name={name}
-								id={id}
-							/>
-						</td>
-						<td className="align-middle font-uppercase"><b>{name}</b></td>
-						<td className="align-middle">
-							<input
-								style={{ textAlign: 'center'}}
-								className="form-control font-weight-bold"
-								type="number"
-								value={inputValues['value-' + id]}
-								id={'value-' + id}
-								name={'value-' + id}
-								onChange={handleInputChange}
-							/>
-						</td>
-						<td className="align-middle">
-							<select
-								className="form-control font-weight-bold"
-								onChange={(e) => onChangeStatus(e)}
-								data-payment-id={id}
-							>
-								<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
-								<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
-							</select>
-						</td>
-					</tr>
-				</>
+				<tr
+					key={Utils.generateHash()}
+					className={status === "PAGO" ? "table-success" : ""}
+				>
+					<td className="align-middle">
+						<PlayerImageModal
+							pathImage={path_image}
+							name={name}
+							id={id}
+						/>
+					</td>
+					<td className="align-middle font-uppercase"><b>{name}</b></td>
+					<td className="align-middle">
+						<input
+							style={{ textAlign: 'center' }}
+							className="form-control font-weight-bold"
+							type="number"
+							value={inputValues['value-' + id]}
+							id={'value-' + id}
+							name={'value-' + id}
+							onChange={handleInputChange}
+						/>
+					</td>
+					<td className="align-middle">
+						<select
+							className="form-control font-weight-bold"
+							onChange={(e) => onChangeStatus(e)}
+							data-payment-id={id}
+						>
+							<option value={"PAGO"} selected={status === "PAGO"}>PAGO</option>
+							<option value={"NÃO PAGO"} selected={status === "NÃO PAGO"}>NÃO PAGO</option>
+						</select>
+					</td>
+				</tr>
 			);
 		});
 	}
